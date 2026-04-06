@@ -7,6 +7,7 @@ import re
 import json
 import logging
 import subprocess
+import sys
 from typing import List, Dict, Optional
 
 logger = logging.getLogger(__name__)
@@ -65,7 +66,8 @@ def search_edu_pdfs(
     fetch_limit = max_results * 8 if strict_mode else max_results * 2 + 10
 
     command = [
-        "yt-dlp",
+        sys.executable,
+        "-m", "yt_dlp",
         search_url,
         "--flat-playlist",
         "-j",
